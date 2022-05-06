@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HOTELESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HABITACION_SEDE">
+    <Key>
+      <PropertyRef Name="ID_HABITACION_SEDE" />
+    </Key>
+    <Property Name="ID_HABITACION_SEDE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_SEDE" Type="Int32" Nullable="false" />
+    <Property Name="ID_TIPO_HABITACION" Type="Int32" Nullable="false" />
+    <Property Name="NRO_HABITACIONES" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SEDES" Relationship="Self.FK_HABITACION_SEDE_SEDES" FromRole="HABITACION_SEDE" ToRole="SEDES" />
+    <NavigationProperty Name="TIPO_HABITACIONES" Relationship="Self.FK_HABITACION_SEDE_TIPO_HABITACIONES" FromRole="HABITACION_SEDE" ToRole="TIPO_HABITACIONES" />
+  </EntityType>
+  <EntityType Name="RESERVAS">
+    <Key>
+      <PropertyRef Name="ID_RESERVA" />
+    </Key>
+    <Property Name="ID_RESERVA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_SEDE" Type="Int32" Nullable="false" />
+    <Property Name="ID_TIPO_HABITACION" Type="Int32" Nullable="false" />
+    <Property Name="FECHA_IN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHA_OUT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NRO_PERSONAS" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SEDES" Relationship="Self.FK_RESERVAS_SEDES" FromRole="RESERVAS" ToRole="SEDES" />
+    <NavigationProperty Name="TIPO_HABITACIONES" Relationship="Self.FK_RESERVAS_TIPO_HABITACIONES" FromRole="RESERVAS" ToRole="TIPO_HABITACIONES" />
+  </EntityType>
+  <EntityType Name="SEDES">
+    <Key>
+      <PropertyRef Name="ID_SEDE" />
+    </Key>
+    <Property Name="ID_SEDE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_SEDE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CUPO_MAX" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HABITACION_SEDE" Relationship="Self.FK_HABITACION_SEDE_SEDES" FromRole="SEDES" ToRole="HABITACION_SEDE" />
+    <NavigationProperty Name="RESERVAS" Relationship="Self.FK_RESERVAS_SEDES" FromRole="SEDES" ToRole="RESERVAS" />
+    <NavigationProperty Name="TARIFAS" Relationship="Self.FK_TARIFAS_SEDES" FromRole="SEDES" ToRole="TARIFAS" />
+  </EntityType>
+  <EntityType Name="TARIFAS">
+    <Key>
+      <PropertyRef Name="ID_TARIFA" />
+    </Key>
+    <Property Name="ID_TARIFA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_SEDE" Type="Int32" Nullable="false" />
+    <Property Name="ID_TIPO_HABITACION" Type="Int32" Nullable="false" />
+    <Property Name="FECHA_INI" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHA_FIN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="VALOR_NOCHE_PERSONA" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="SEDES" Relationship="Self.FK_TARIFAS_SEDES" FromRole="TARIFAS" ToRole="SEDES" />
+    <NavigationProperty Name="TIPO_HABITACIONES" Relationship="Self.FK_TARIFAS_TIPO_HABITACIONES" FromRole="TARIFAS" ToRole="TIPO_HABITACIONES" />
+  </EntityType>
+  <EntityType Name="TIPO_HABITACIONES">
+    <Key>
+      <PropertyRef Name="ID_TIPO_HABITACION" />
+    </Key>
+    <Property Name="ID_TIPO_HABITACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="HABITACION_SEDE" Relationship="Self.FK_HABITACION_SEDE_TIPO_HABITACIONES" FromRole="TIPO_HABITACIONES" ToRole="HABITACION_SEDE" />
+    <NavigationProperty Name="RESERVAS" Relationship="Self.FK_RESERVAS_TIPO_HABITACIONES" FromRole="TIPO_HABITACIONES" ToRole="RESERVAS" />
+    <NavigationProperty Name="TARIFAS" Relationship="Self.FK_TARIFAS_TIPO_HABITACIONES" FromRole="TIPO_HABITACIONES" ToRole="TARIFAS" />
+  </EntityType>
+  <Association Name="FK_HABITACION_SEDE_SEDES">
+    <End Role="SEDES" Type="Self.SEDES" Multiplicity="1" />
+    <End Role="HABITACION_SEDE" Type="Self.HABITACION_SEDE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEDES">
+        <PropertyRef Name="ID_SEDE" />
+      </Principal>
+      <Dependent Role="HABITACION_SEDE">
+        <PropertyRef Name="ID_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HABITACION_SEDE_TIPO_HABITACIONES">
+    <End Role="TIPO_HABITACIONES" Type="Self.TIPO_HABITACIONES" Multiplicity="1" />
+    <End Role="HABITACION_SEDE" Type="Self.HABITACION_SEDE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_HABITACIONES">
+        <PropertyRef Name="ID_TIPO_HABITACION" />
+      </Principal>
+      <Dependent Role="HABITACION_SEDE">
+        <PropertyRef Name="ID_TIPO_HABITACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESERVAS_SEDES">
+    <End Role="SEDES" Type="Self.SEDES" Multiplicity="1" />
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEDES">
+        <PropertyRef Name="ID_SEDE" />
+      </Principal>
+      <Dependent Role="RESERVAS">
+        <PropertyRef Name="ID_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESERVAS_TIPO_HABITACIONES">
+    <End Role="TIPO_HABITACIONES" Type="Self.TIPO_HABITACIONES" Multiplicity="1" />
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_HABITACIONES">
+        <PropertyRef Name="ID_TIPO_HABITACION" />
+      </Principal>
+      <Dependent Role="RESERVAS">
+        <PropertyRef Name="ID_TIPO_HABITACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARIFAS_SEDES">
+    <End Role="SEDES" Type="Self.SEDES" Multiplicity="1" />
+    <End Role="TARIFAS" Type="Self.TARIFAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEDES">
+        <PropertyRef Name="ID_SEDE" />
+      </Principal>
+      <Dependent Role="TARIFAS">
+        <PropertyRef Name="ID_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARIFAS_TIPO_HABITACIONES">
+    <End Role="TIPO_HABITACIONES" Type="Self.TIPO_HABITACIONES" Multiplicity="1" />
+    <End Role="TARIFAS" Type="Self.TARIFAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_HABITACIONES">
+        <PropertyRef Name="ID_TIPO_HABITACION" />
+      </Principal>
+      <Dependent Role="TARIFAS">
+        <PropertyRef Name="ID_TIPO_HABITACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HOTELESEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HABITACION_SEDE" EntityType="Self.HABITACION_SEDE" />
+    <EntitySet Name="RESERVAS" EntityType="Self.RESERVAS" />
+    <EntitySet Name="SEDES" EntityType="Self.SEDES" />
+    <EntitySet Name="TARIFAS" EntityType="Self.TARIFAS" />
+    <EntitySet Name="TIPO_HABITACIONES" EntityType="Self.TIPO_HABITACIONES" />
+    <AssociationSet Name="FK_HABITACION_SEDE_SEDES" Association="Self.FK_HABITACION_SEDE_SEDES">
+      <End Role="SEDES" EntitySet="SEDES" />
+      <End Role="HABITACION_SEDE" EntitySet="HABITACION_SEDE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HABITACION_SEDE_TIPO_HABITACIONES" Association="Self.FK_HABITACION_SEDE_TIPO_HABITACIONES">
+      <End Role="TIPO_HABITACIONES" EntitySet="TIPO_HABITACIONES" />
+      <End Role="HABITACION_SEDE" EntitySet="HABITACION_SEDE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESERVAS_SEDES" Association="Self.FK_RESERVAS_SEDES">
+      <End Role="SEDES" EntitySet="SEDES" />
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESERVAS_TIPO_HABITACIONES" Association="Self.FK_RESERVAS_TIPO_HABITACIONES">
+      <End Role="TIPO_HABITACIONES" EntitySet="TIPO_HABITACIONES" />
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARIFAS_SEDES" Association="Self.FK_TARIFAS_SEDES">
+      <End Role="SEDES" EntitySet="SEDES" />
+      <End Role="TARIFAS" EntitySet="TARIFAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARIFAS_TIPO_HABITACIONES" Association="Self.FK_TARIFAS_TIPO_HABITACIONES">
+      <End Role="TIPO_HABITACIONES" EntitySet="TIPO_HABITACIONES" />
+      <End Role="TARIFAS" EntitySet="TARIFAS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

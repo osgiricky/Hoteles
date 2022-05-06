@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e17cff82bcf440709c4fcea10d5cba15" Name="Diagram1">
+        <EntityTypeShape EntityType="HOTELESModel.HABITACION_SEDE" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELESModel.RESERVAS" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELESModel.SEDES" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELESModel.TARIFAS" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELESModel.TIPO_HABITACIONES" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="HOTELESModel.FK_HABITACION_SEDE_SEDES" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELESModel.FK_HABITACION_SEDE_TIPO_HABITACIONES" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELESModel.FK_RESERVAS_SEDES" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELESModel.FK_RESERVAS_TIPO_HABITACIONES" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELESModel.FK_TARIFAS_SEDES" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELESModel.FK_TARIFAS_TIPO_HABITACIONES" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

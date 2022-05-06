@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HOTELESModelStoreContainer" CdmEntityContainer="HOTELESEntities">
+    <EntitySetMapping Name="HABITACION_SEDE">
+      <EntityTypeMapping TypeName="HOTELESModel.HABITACION_SEDE">
+        <MappingFragment StoreEntitySet="HABITACION_SEDE">
+          <ScalarProperty Name="ID_HABITACION_SEDE" ColumnName="ID_HABITACION_SEDE" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="ID_TIPO_HABITACION" ColumnName="ID_TIPO_HABITACION" />
+          <ScalarProperty Name="NRO_HABITACIONES" ColumnName="NRO_HABITACIONES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESERVAS">
+      <EntityTypeMapping TypeName="HOTELESModel.RESERVAS">
+        <MappingFragment StoreEntitySet="RESERVAS">
+          <ScalarProperty Name="ID_RESERVA" ColumnName="ID_RESERVA" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="ID_TIPO_HABITACION" ColumnName="ID_TIPO_HABITACION" />
+          <ScalarProperty Name="FECHA_IN" ColumnName="FECHA_IN" />
+          <ScalarProperty Name="FECHA_OUT" ColumnName="FECHA_OUT" />
+          <ScalarProperty Name="NRO_PERSONAS" ColumnName="NRO_PERSONAS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEDES">
+      <EntityTypeMapping TypeName="HOTELESModel.SEDES">
+        <MappingFragment StoreEntitySet="SEDES">
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="NOMBRE_SEDE" ColumnName="NOMBRE_SEDE" />
+          <ScalarProperty Name="CUPO_MAX" ColumnName="CUPO_MAX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TARIFAS">
+      <EntityTypeMapping TypeName="HOTELESModel.TARIFAS">
+        <MappingFragment StoreEntitySet="TARIFAS">
+          <ScalarProperty Name="ID_TARIFA" ColumnName="ID_TARIFA" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="ID_TIPO_HABITACION" ColumnName="ID_TIPO_HABITACION" />
+          <ScalarProperty Name="FECHA_INI" ColumnName="FECHA_INI" />
+          <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+          <ScalarProperty Name="VALOR_NOCHE_PERSONA" ColumnName="VALOR_NOCHE_PERSONA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_HABITACIONES">
+      <EntityTypeMapping TypeName="HOTELESModel.TIPO_HABITACIONES">
+        <MappingFragment StoreEntitySet="TIPO_HABITACIONES">
+          <ScalarProperty Name="ID_TIPO_HABITACION" ColumnName="ID_TIPO_HABITACION" />
+          <ScalarProperty Name="NOMBRE_TIPO" ColumnName="NOMBRE_TIPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

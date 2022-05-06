@@ -1,0 +1,12 @@
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\bin\Debug\Datos.dll.config
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\bin\Debug\Datos.dll
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\bin\Debug\Datos.pdb
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\bin\Debug\EntityFramework.dll
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\bin\Debug\EntityFramework.xml
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\obj\Debug\Datos.dll
+C:\Personal\Prueba Axede\HOTELES\Hoteles\Datos\obj\Debug\Datos.pdb

@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <a href='@Url.Action("Index", "Sales")' class="btn btn-primary btn-block"> Sedes </a>
+        </div>
+        <div class="col-md-4">
+            <a href='@Url.Action("Index", "Products")' class="btn btn-primary btn-block"> Habitaciones Sede </a>
+        </div>
+        <div class="col-md-4">
+            <a href='@Url.Action("Index", "ProductDetails")' class="btn btn-primary btn-block"> Tipo Habitaciones </a>
+        </div>        
+    </div>
+    <br />
+    <hr />
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <a href='@Url.Action("Index", "ProductPresentationPrices")' class="btn btn-primary btn-block"> Reservas</a>
+        </div>
+        <div class="col-md-4">
+            <a href='@Url.Action("Index", "Products")' class="btn btn-primary btn-block"> Tarifas </a>
+        </div>
+
+    </div>
+
+</div>
